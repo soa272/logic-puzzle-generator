@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>論理パズルジェネレーター</title>
+</head>
+<body class="overflow-x-hidden">
+  <div class="container p-3">
+    <h1>論理パズルジェネレーター</h1>
+    <p>
+      このパズルに出てくる登場人物は、正直者か嘘つきのどちらかです。<br>
+      正直者はつねに正しいことを言い、嘘つきはつねに間違ったことを言います。 <br>
+      登場人物の発言をもとに、正直者か嘘つきかを特定しましょう。
+    </p>
+    <button type="button" class="btn btn-secondary mb-5" data-bs-toggle="modal" data-bs-target="#detail-modal">
+      細かい注意点
+    </button>
+    <div class="modal fade" id="detail-modal" tab-index="-1" aria-labelledby="detail-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="detail-modal-label">細かい注意点</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+          </div>
+          <div class="modal-body">
+            <h4>登場人物が発言する言葉の意味</h4>
+            <ul>
+              <li>「嘘つきは N 人以下」と言う場合、0 人の可能性も含めるものとします。</li>
+              <li>「a で、b」は、a と b の<u>両方とも正しい</u>場合にのみ正しいものとします（論理積）。</li>
+              <li>「a か、または b」は、a と b の<u>一方もしくは両方が正しい</u>場合に正しいものとします（論理和）。</li>
+              <li>「もし、a ならば、b」は、<u>a が間違っているか、または b が正しい</u>場合に正しいものとし、a が正しくて b が間違っている場合に間違っているものとします（論理包含）。</li>
+              <li>「もし、a ならば、b」は、意味のうえでは一番外側に来るものとします。たとえば、「もし、a ならば、b で、c です。」という形の場合、「a ならば『b かつ c』」という意味になります。</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row gx-5 gy-4">
+      <div class="col-auto">
+        <div class="bg-body-secondary border border-light rounded p-3 shadow mb-2">
+          <div class="mb-3">
+            <label for="person-count" class="form-label">登場人物の数 (2~8)</label>
+            <div class="input-group">
+              <input type="number" class="form-control focus-ring" id="person-count" min="2" max="8" value="4" autocomplete="off">
+              <span class="input-group-text">人</span>
+            </div>
+          </div>
+          <div>
+            <label for="sentence-complexity" class="form-label">文章の複雑度</label>
+            <div class="row gx-2">
+              <div class="col-auto">
+                <label for="sentence-complexity" class="form-label">簡単</label>
+              </div>
+              <div class="col">
+                <input type="range" class="form-range" id="sentence-complexity" min="0" max="4" value="0">
+              </div>
+              <div class="col-auto">
+                <label for="sentence-complexity" class="form-label">複雑</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary w-100" id="generate-button">生成</button>
+      </div>
+
+      <div class="col-xl">
+        <div id="quiz-area" class="mb-3"></div>
+        <div class="rounded mb-3 text-center align-middle p-3 d-none" id="result-area">
+          <h3 id="result-headline"></h3>
+          <p id="result-paragraph" class="mb-0"></p>
+        </div>
+        <div id="confirm-button-area"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="utility.js"></script>
+  <script src="statement.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
