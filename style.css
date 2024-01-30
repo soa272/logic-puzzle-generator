@@ -1,7 +1,4 @@
 body {
-  /* background-color: #063239; */
-  /* background-color: #103338; */
-  /* --bs-body-bg: #052e34; */
   --bs-body-bg: #03292f;
   --bs-body-color: #e2e9e6;
   --bs-border-color: #535e6c;
@@ -9,8 +6,6 @@ body {
   --bs-secondary-bg-rgb: 5, 67, 76;
   --bs-tertiary-bg: #043840;
   --bs-tertiary-bg-rgb: 4, 56, 64;
-  --bs-primary: #058ca0;
-  --bs-primary-rgb: 5, 140, 160;
   --bs-focus-ring-color: rgba(85, 193, 210, 0.25);
 }
 
@@ -37,7 +32,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* color: rgb(var(--bs-dark-rgb)); */
   text-shadow: 0 0 20px black;
   font-size: 1.8rem;
 }
